@@ -173,10 +173,10 @@ const SurveyComplete = () => {
             나와 딱 맞는 유기반려견 Top 4
           </span>
           <DogItemContainer>
-            <DogItem />
-            <DogItem />
-            <DogItem />
-            <DogItem />
+            <DogItem rank={1} />
+            <DogItem rank={2} />
+            <DogItem rank={3} />
+            <DogItem rank={4} />
           </DogItemContainer>
 
           <SearchFilter />

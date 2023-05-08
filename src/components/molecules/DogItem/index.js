@@ -11,6 +11,7 @@ const DogItemContainer = styled("div")`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   overflow: hidden;
   margin-bottom: 20px;
+  position: relative;
 `;
 
 const DogImage = styled("img")`
@@ -32,8 +33,22 @@ const Name = styled("div")`
   color: #333333;
   margin-bottom: 6px;
 `;
+const DogRank = styled("div")`
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #643ace;
+  color: white;
+  font-size: 15px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const DogItem = () => {
+const DogItem = ({ rank }) => {
   return (
     <DogItemContainer>
       <DogImage
@@ -47,6 +62,7 @@ const DogItem = () => {
         <span>흰색 / 4.4(Kg) / M</span>
         <span>Y / 목줄없고 온순함.</span>
       </DogData>
+      {rank && <DogRank>{rank}위</DogRank>}
     </DogItemContainer>
   );
 };
