@@ -21,11 +21,20 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/surveyComplete" element={<SurveyCompletePage />} />
+            <Route path={process.env.PUBLIC_URL + `/`} element={<HomePage />} />
+            <Route
+              path={process.env.PUBLIC_URL + `/search`}
+              element={<SearchPage />}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + `/surveyComplete`}
+              element={<SurveyCompletePage />}
+            />
 
-            <Route path="/myPage" element={<MyPage />} />
+            <Route
+              path={process.env.PUBLIC_URL + `/myPage`}
+              element={<MyPage />}
+            />
           </Route>
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
