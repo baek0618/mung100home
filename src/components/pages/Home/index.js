@@ -15,7 +15,7 @@ const BannerContainer = styled("div")`
   align-items: center;
   height: 500px;
   background-color: tan;
-  background: url("/img/info_home.png") no-repeat;
+  background: url("./img/info_home.png") no-repeat;
   background-size: cover;
 `;
 const BannerContents = styled("div")`
@@ -178,15 +178,15 @@ const Home = () => {
           </span>
           <DogTypeWrapper>
             <DogType>
-              <DogImage src="/img/bti1.png" alt="" />
+              <DogImage src="./img/bti1.png" alt="" />
               <DogName>만능 멍멍이</DogName>
             </DogType>
             <DogType>
-              <DogImage src="/img/bti2.png" alt="" />
+              <DogImage src="./img/bti2.png" alt="" />
               <DogName>나랑 같이 뛸래?</DogName>
             </DogType>
             <DogType>
-              <DogImage src="/img/bti3.png" alt="" />
+              <DogImage src="./img/bti3.png" alt="" />
               <DogName>손길이 필요해</DogName>
             </DogType>
           </DogTypeWrapper>

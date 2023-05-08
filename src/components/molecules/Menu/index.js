@@ -56,7 +56,7 @@ const Divider = styled("div")`
 `;
 
 const goToHomePage = () => {
-  customHistory.push("/");
+  customHistory.push(process.env.PUBLIC_URL + `/`);
 };
 
 const goToSearchPage = () => {
@@ -76,7 +76,7 @@ const Menu = () => {
     <HeadContainer>
       <HeadWrapper>
         <Logo>
-          <img src="/img/main_logo.png" alt="logo" style={{ width: "100%" }} />
+          <img src="./img/main_logo.png" alt="logo" style={{ width: "100%" }} />
         </Logo>
         <MenuContainer>
           <UserMenuWrapper>

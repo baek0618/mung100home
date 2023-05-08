@@ -17,7 +17,7 @@ const BannerContainer = styled("div")`
   align-items: center;
   height: 560px;
   background-color: tan;
-  background: url("/img/SearchBanner.png") no-repeat;
+  background: url("./img/SearchBanner.png") no-repeat;
   background-size: cover;
 `;
 const BannerContents = styled("div")`
@@ -78,7 +78,7 @@ const MyDogType = styled("div")`
   width: 100%;
   border-radius: 20px;
   padding: 0 50px;
-  background: url("/img/after_page.png") no-repeat;
+  background: url("./img/after_page.png") no-repeat;
   height: 170px;
   display: flex;
   align-items: center;
@@ -136,7 +136,7 @@ const SurveyComplete = () => {
 
           <MyDogType>
             <DogType>
-              <DogImage src="/img/bti1.png" alt="" />
+              <DogImage src="./img/bti1.png" alt="" />
               <DogName>만능 멍멍이</DogName>
             </DogType>
             <MyDogText>
