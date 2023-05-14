@@ -42,7 +42,7 @@ let theme = createTheme({
     },
     info: {
       main: "#5f49a6",
-      light: "#009BEB",
+      light: "#5f49a6",
       // dark: "#0086A2",
       dark: "rgba(95, 73, 166, 0.7)",
 

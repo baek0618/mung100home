@@ -12,6 +12,7 @@ import SearchPage from "components/pages/Search";
 import SurveyCompletePage from "components/pages/SurveyComplete";
 
 import MyPage from "components/pages/MyPage";
+import LoginPage from "components/pages/Login";
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path={`/`} element={<HomePage />} />
-
             <Route path={process.env.PUBLIC_URL + `/`} element={<HomePage />} />
             <Route
               path={process.env.PUBLIC_URL + `/search`}
@@ -38,6 +38,10 @@ function App() {
               element={<MyPage />}
             />
           </Route>
+          <Route
+            path={process.env.PUBLIC_URL + `/login`}
+            element={<LoginPage />}
+          />
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </ThemeProvider>

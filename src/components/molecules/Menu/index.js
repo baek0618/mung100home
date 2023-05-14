@@ -70,17 +70,24 @@ const goToMyPage = () => {
 const goToSurveyCompletePage = () => {
   customHistory.push(process.env.PUBLIC_URL + "/surveyComplete");
 };
+const goToLoginPage = () => {
+  customHistory.push(process.env.PUBLIC_URL + "/login");
+};
 
 const Menu = () => {
   return (
     <HeadContainer>
       <HeadWrapper>
-        <Logo>
-          <img src="/img/main_logo.png" alt="logo" style={{ width: "100%" }} />
+        <Logo onClick={goToHomePage}>
+          <img src="./img/main_logo.png" alt="logo" style={{ width: "100%" }} />
         </Logo>
         <MenuContainer>
           <UserMenuWrapper>
-            <MenuButton sx={{ color: "#828282" }} variant="text">
+            <MenuButton
+              onClick={goToLoginPage}
+              sx={{ color: "#828282" }}
+              variant="text"
+            >
               로그인
             </MenuButton>
             <Divider />
