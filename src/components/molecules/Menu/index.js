@@ -60,15 +60,15 @@ const goToHomePage = () => {
 };
 
 const goToSearchPage = () => {
-  customHistory.push("search");
+  customHistory.push(process.env.PUBLIC_URL + "/search");
 };
 
 const goToMyPage = () => {
-  customHistory.push("myPage");
+  customHistory.push(process.env.PUBLIC_URL + "/myPage");
 };
 
 const goToSurveyCompletePage = () => {
-  customHistory.push("surveyComplete");
+  customHistory.push(process.env.PUBLIC_URL + "/surveyComplete");
 };
 
 const Menu = () => {
@@ -76,7 +76,7 @@ const Menu = () => {
     <HeadContainer>
       <HeadWrapper>
         <Logo>
-          <img src="./img/main_logo.png" alt="logo" style={{ width: "100%" }} />
+          <img src="/img/main_logo.png" alt="logo" style={{ width: "100%" }} />
         </Logo>
         <MenuContainer>
           <UserMenuWrapper>

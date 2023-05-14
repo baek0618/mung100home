@@ -21,6 +21,8 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route element={<Layout />}>
+            <Route path={`/`} element={<HomePage />} />
+
             <Route path={process.env.PUBLIC_URL + `/`} element={<HomePage />} />
             <Route
               path={process.env.PUBLIC_URL + `/search`}
