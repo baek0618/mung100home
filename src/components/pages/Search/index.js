@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import DogItem from "components/molecules/DogItem";
 import IconButton from "@mui/material/IconButton";
 import SearchFilter from "components/organisms/SearchFilter";
+import Pagination from "@mui/material/Pagination";
 
 const SearchContainer = styled("div")`
   display: flex;
@@ -108,6 +109,14 @@ const AdoptionInfoButton = styled(Button)`
   font-weight: bold;
   font-size: 19px;
 `;
+const PaginationWrapper = styled("div")`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+const CustomPagination = styled(Pagination)`
+  margin-top: 50px;
+`;
 
 const Search = () => {
   return (
@@ -196,6 +205,14 @@ const Search = () => {
             <DogItem />
             <DogItem />
           </DogItemContainer>
+          <PaginationWrapper>
+            <CustomPagination
+              shape={"circular"}
+              variant="outlined"
+              count={10}
+              color="primary"
+            />
+          </PaginationWrapper>
         </TextContents>
 
         <TextContents>

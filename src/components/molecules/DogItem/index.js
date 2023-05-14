@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Button from "@mui/material/Button";
 
-const DogItemContainer = styled("div")`
+const DogItemContainer = styled(Button)`
   display: flex;
   flex-direction: column;
   border-radius: 9px;
@@ -12,6 +13,8 @@ const DogItemContainer = styled("div")`
   overflow: hidden;
   margin-bottom: 20px;
   position: relative;
+  cursor: pointer;
+  padding: 0;
 `;
 
 const DogImage = styled("img")`
@@ -26,6 +29,8 @@ const DogData = styled("div")`
   color: #748482;
   font-size: 14px;
   padding: 8px 15px;
+  text-align: left;
+  width: 100%;
 `;
 const Name = styled("div")`
   font-size: 18px;
@@ -50,7 +55,7 @@ const DogRank = styled("div")`
 
 const DogItem = ({ rank }) => {
   return (
-    <DogItemContainer>
+    <DogItemContainer variant="text">
       <DogImage
         src={
           "http://www.animal.go.kr/files/shelter/2022/04/202207031107693_s.jpg"

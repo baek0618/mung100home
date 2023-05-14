@@ -13,6 +13,7 @@ const HeadContainer = styled("div")`
   z-index: 2;
   justify-content: center;
   padding-top: 20px;
+  padding-bottom: 10px;
 `;
 const HeadWrapper = styled("div")`
   display: flex;
@@ -22,7 +23,7 @@ const HeadWrapper = styled("div")`
 `;
 const Logo = styled(IconButton)`
   width: 340px;
-  height: 100px;
+  height: 80px;
 `;
 const MenuContainer = styled("div")`
   display: flex;

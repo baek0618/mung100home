@@ -20,7 +20,7 @@ let theme = createTheme({
   palette: {
     // mode: "dark",
     primary: {
-      main: "#141414",
+      main: "#5f49a6",
       light: "#313133",
       dark: "#131313",
       contrastText: "#333333",
@@ -195,7 +195,7 @@ theme = createTheme(theme, {
     MuiPaginationItem: {
       styleOverrides: {
         root: {
-          borderRadius: 6,
+          // borderRadius: 6,
           marginLeft: 3,
           marginRight: 3,
           fontSize: "",

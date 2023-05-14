@@ -51,7 +51,17 @@ const SearchFilter = () => {
           <FilterItemButton>test</FilterItemButton>
           <FilterItemButton>test</FilterItemButton>
         </FilterItemButtonWrapper>
-        <Button sx={{ color: "#828282" }} variant="text">
+        <Button
+          endIcon={
+            <img
+              src="./img/icons/reset.png"
+              style={{ width: "20px", height: "20px" }}
+              alt=""
+            />
+          }
+          sx={{ color: "#828282" }}
+          variant="text"
+        >
           설정 초기화
         </Button>
       </RowBox>

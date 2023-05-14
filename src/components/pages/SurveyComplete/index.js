@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 import DogItem from "components/molecules/DogItem";
 import SearchFilter from "components/organisms/SearchFilter";
+import Pagination from "@mui/material/Pagination";
 
 const MyPageContainer = styled("div")`
   display: flex;
@@ -90,6 +91,14 @@ const MyDogText = styled("div")`
   flex-direction: column;
   padding-left: 50px;
   color: white;
+`;
+const PaginationWrapper = styled("div")`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+const CustomPagination = styled(Pagination)`
+  margin-top: 50px;
 `;
 
 const SurveyComplete = () => {
@@ -189,6 +198,14 @@ const SurveyComplete = () => {
             <DogItem />
             <DogItem />
           </DogItemContainer>
+          <PaginationWrapper>
+            <CustomPagination
+              shape={"circular"}
+              variant="outlined"
+              count={10}
+              color="primary"
+            />
+          </PaginationWrapper>
         </TextContents>
       </HomeContents>
     </MyPageContainer>
