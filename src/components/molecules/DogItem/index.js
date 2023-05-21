@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
+import ItemModal from "components/molecules/ItemModal";
 
 const DogItemContainer = styled(Button)`
   display: flex;
@@ -22,6 +23,7 @@ const DogImage = styled("img")`
   width: 100%;
   height: 60%;
   background-color: #aeaeae;
+  object-fit: cover;
 `;
 const DogData = styled("div")`
   display: flex;
@@ -53,22 +55,44 @@ const DogRank = styled("div")`
   align-items: center;
 `;
 
-const DogItem = ({ rank }) => {
+const DogItem = ({ rank, data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  console.log("datadata", data);
+
+  const handleItemModal = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <DogItemContainer variant="text">
-      <DogImage
-        src={
-          "http://www.animal.go.kr/files/shelter/2022/04/202207031107693_s.jpg"
-        }
-      />
-      <DogData>
-        <Name>말티즈</Name>
-        <span>2021(년생) 추정</span>
-        <span>흰색 / 4.4(Kg) / M</span>
-        <span>Y / 목줄없고 온순함.</span>
-      </DogData>
-      {rank && <DogRank>{rank}위</DogRank>}
-    </DogItemContainer>
+    <>
+      <DogItemContainer variant="text" onClick={handleItemModal}>
+        {data && (
+          <>
+            <DogImage src={data["이미지경로"]} />
+            <DogData>
+              <Name>{data["공고고유번호"]}</Name>
+              <span>{data["나이"]}</span>
+              <span>
+                {data["품종"]} / {data["색상"]} / {data["체중"]}
+              </span>
+              <span>
+                {data["성별"]} / {data["중성화여부"]}
+              </span>
+            </DogData>
+            {rank && <DogRank>{rank}위</DogRank>}
+          </>
+        )}
+      </DogItemContainer>
+
+      {data && (
+        <ItemModal
+          isOpen={isOpen}
+          handleClose={() => setIsOpen(false)}
+          data={data}
+        />
+      )}
+    </>
   );
 };
 

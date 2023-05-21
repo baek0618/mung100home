@@ -10,6 +10,7 @@ import Layout from "components/molecules/Layout";
 import HomePage from "components/pages/Home";
 import SearchPage from "components/pages/Search";
 import SurveyCompletePage from "components/pages/SurveyComplete";
+import SurveyPage from "components/pages/Survey";
 
 import MyPage from "components/pages/MyPage";
 import LoginPage from "components/pages/Login";
@@ -31,6 +32,10 @@ function App() {
             <Route
               path={process.env.PUBLIC_URL + `/surveyComplete`}
               element={<SurveyCompletePage />}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + `/survey`}
+              element={<SurveyPage />}
             />
 
             <Route
