@@ -15,29 +15,25 @@ const LabelText = styled("div")`
   margin-bottom: 5px;
 `;
 
-const SelectLabels = ({ label }) => {
-  const [age, setAge] = useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
+const SelectLabels = ({ value, handleChange, label, items }) => {
   return (
     <SelectContainer>
       <LabelText>{label}</LabelText>
       <Select
+        id={label}
         sx={{ width: "160px", color: "#333333" }}
-        value={age}
+        value={value}
         onChange={handleChange}
+        defaultValue={""}
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
       >
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {items.map((item) => (
+          <MenuItem value={item}>{item}</MenuItem>
+        ))}
       </Select>
     </SelectContainer>
   );

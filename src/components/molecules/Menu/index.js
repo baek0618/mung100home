@@ -115,13 +115,13 @@ const Menu = () => {
             >
               유기견 검색
             </MenuButton>
-            <MenuButton
+            {/* <MenuButton
               onClick={goToSurveyCompletePage}
               sx={{ fontWeight: "bold" }}
               variant="text"
             >
               유기견 검색 (설문 후)
-            </MenuButton>
+            </MenuButton> */}
             <MenuButton sx={{ fontWeight: "bold" }} variant="text">
               정보·소식
             </MenuButton>

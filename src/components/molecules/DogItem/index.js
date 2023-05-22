@@ -58,8 +58,6 @@ const DogRank = styled("div")`
 const DogItem = ({ rank, data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("datadata", data);
-
   const handleItemModal = () => {
     setIsOpen(!isOpen);
   };

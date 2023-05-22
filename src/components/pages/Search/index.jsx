@@ -127,18 +127,124 @@ const goToSurveyPage = () => {
 const Search = () => {
   const limit = 12;
 
+  const [db, setDb] = useState(dummy);
   const [page, setPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
-    setCurrentItems(dummy.slice(0 + (page - 1) * limit, page * limit));
-  }, [page]);
+    setCurrentItems(db.slice(0 + (page - 1) * limit, page * limit));
+  }, [page, db]);
 
   const handlePageChange = (event, value) => {
     setPage(value);
   };
 
-  console.log("currentItemscurrentItems", currentItems);
+  const handleFilterState = (newState) => {
+    let newDb = [...dummy];
+    Object.keys(newState).forEach((filterKey) => {
+      let targetValue;
+      if (newState[filterKey] !== "") {
+        switch (filterKey) {
+          case "gender":
+            targetValue = newState[filterKey];
+            newDb = newDb.filter((dogData) => dogData["성별"] === targetValue);
+            break;
+          case "size":
+            targetValue = newState[filterKey];
+            switch (targetValue) {
+              case "1~3kg":
+                newDb = newDb.filter(
+                  (dogData) => dogData["체중"].replaceAll("(Kg)", "") < "4"
+                );
+                break;
+              case "4~6kg":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["체중"].replaceAll("(Kg)", "") >= "4" &&
+                    dogData["체중"].replaceAll("(Kg)", "") < "7"
+                );
+                break;
+              case "7kg 이상":
+                newDb = newDb.filter(
+                  (dogData) => dogData["체중"].replaceAll("(Kg)", "") >= "7"
+                );
+                break;
+              default:
+                break;
+            }
+            break;
+          case "age":
+            targetValue = newState[filterKey].toString();
+            switch (targetValue) {
+              case "2019이하":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["나이"].replaceAll("(년생)", "") <= "2019"
+                );
+                break;
+              case "2020":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["나이"].replaceAll("(년생)", "").toString() ===
+                    "2020"
+                );
+                break;
+              case "2021":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["나이"].replaceAll("(년생)", "").toString() ===
+                    "2021"
+                );
+                break;
+              case "2022":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["나이"].replaceAll("(년생)", "").toString() ===
+                    "2022"
+                );
+                break;
+              default:
+                break;
+            }
+            break;
+
+          case "color":
+            targetValue = newState[filterKey].toString();
+            switch (targetValue) {
+              case "검정":
+                newDb = newDb.filter((dogData) => dogData["색상"] === "검정");
+                break;
+              case "흰색":
+                newDb = newDb.filter((dogData) => dogData["색상"] === "흰색");
+                break;
+              case "갈색":
+                newDb = newDb.filter((dogData) => dogData["색상"] === "갈색");
+                break;
+              case "무늬/멀티":
+                newDb = newDb.filter(
+                  (dogData) =>
+                    dogData["색상"] === "무늬" || dogData["색상"].includes("/")
+                );
+                break;
+              default:
+                break;
+            }
+            break;
+          case "personality":
+            targetValue = newState[filterKey];
+            if (targetValue === "온순") {
+              newDb = newDb.filter((dogData) =>
+                dogData["특징"].includes(targetValue)
+              );
+            }
+            break;
+          default:
+            break;
+        }
+      }
+    });
+    setDb(newDb);
+  };
 
   return (
     <SearchContainer>
@@ -218,7 +324,7 @@ const Search = () => {
           <span>입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.</span>
           <SurveyButton>설문 START</SurveyButton>
 
-          <SearchFilter />
+          <SearchFilter changeFilter={handleFilterState} />
 
           <DogItemContainer>
             {currentItems.map((item) => (
@@ -229,7 +335,7 @@ const Search = () => {
             <CustomPagination
               shape={"circular"}
               variant="outlined"
-              count={Math.round(dummy.length / 15)}
+              count={Math.round(db.length / 15)}
               color="primary"
               page={page}
               onChange={handlePageChange}
