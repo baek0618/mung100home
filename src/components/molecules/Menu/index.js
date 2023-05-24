@@ -6,13 +6,13 @@ import customHistory from "common/history";
 
 const HeadContainer = styled("div")`
   display: flex;
-  height: 160px;
+  height: 140px;
   width: 100%;
   align-items: center;
   box-shadow: 0px 2px 6px gray, 0px 0px 1px gray;
   z-index: 2;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 10px;
 `;
 const HeadWrapper = styled("div")`
@@ -59,20 +59,11 @@ const Divider = styled("div")`
 const goToHomePage = () => {
   customHistory.push(process.env.PUBLIC_URL + `/`);
 };
-
-const goToSearchPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/search");
-};
-
 const goToMyPage = () => {
   customHistory.push(process.env.PUBLIC_URL + "/myPage");
 };
-
-const goToSurveyCompletePage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/surveyComplete");
-};
-const goToLoginPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/login");
+const goToInfoPage = () => {
+  customHistory.push(process.env.PUBLIC_URL + "/info");
 };
 
 const Menu = () => {
@@ -84,7 +75,7 @@ const Menu = () => {
         </Logo>
         <MenuContainer>
           <UserMenuWrapper>
-            <MenuButton
+            {/* <MenuButton
               onClick={goToLoginPage}
               sx={{ color: "#828282" }}
               variant="text"
@@ -98,18 +89,11 @@ const Menu = () => {
               variant="text"
             >
               회원가입
-            </MenuButton>
+            </MenuButton> */}
           </UserMenuWrapper>
           <MenuWrapper>
             <MenuButton
               onClick={goToHomePage}
-              sx={{ fontWeight: "bold" }}
-              variant="text"
-            >
-              멍백홈소개
-            </MenuButton>
-            <MenuButton
-              onClick={goToSearchPage}
               sx={{ fontWeight: "bold" }}
               variant="text"
             >
@@ -122,8 +106,12 @@ const Menu = () => {
             >
               유기견 검색 (설문 후)
             </MenuButton> */}
-            <MenuButton sx={{ fontWeight: "bold" }} variant="text">
-              정보·소식
+            <MenuButton
+              onClick={goToInfoPage}
+              sx={{ fontWeight: "bold" }}
+              variant="text"
+            >
+              입양정보
             </MenuButton>
             <MenuButton
               onClick={goToMyPage}

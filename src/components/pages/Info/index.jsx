@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 
@@ -53,6 +53,11 @@ const AdoptionInfoCategory = styled(Button)`
   font-size: 19px;
   font-weight: bold;
   padding: 10px 25px;
+  color: #bababa;
+  :hover {
+    color: white;
+    background-color: #5f49a6;
+  }
 `;
 const TextContents = styled("div")`
   padding: 50px 0;
@@ -124,7 +129,29 @@ const DogName = styled("div")`
   margin-top: 20px;
 `;
 
-const Home = () => {
+const Info = () => {
+  const suitsDog = useRef();
+  const considerBefore = useRef();
+  const adoptionProgress = useRef();
+  const necessaryItems = useRef();
+  const afterAdoption = useRef();
+
+  const handleSuitsDog = () => {
+    suitsDog.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleConsiderBefore = () => {
+    considerBefore.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleAdoptionProgress = () => {
+    adoptionProgress.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleNecessaryItems = () => {
+    necessaryItems.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleAfterAdoption = () => {
+    afterAdoption.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <HomeContainer>
       <BannerContainer>
@@ -151,16 +178,29 @@ const Home = () => {
             입양 정보
           </span>
           <AdoptionInfoCategoryWrapper>
-            <AdoptionInfoCategory>나와 맞는 강아지 찾기</AdoptionInfoCategory>
-            <AdoptionInfoCategory>입양전 고려할 것</AdoptionInfoCategory>
-            <AdoptionInfoCategory>보호소를 통합 입양과정</AdoptionInfoCategory>
-            <AdoptionInfoCategory>필요한 물품</AdoptionInfoCategory>
-            <AdoptionInfoCategory>입양 후 과정</AdoptionInfoCategory>
+            <AdoptionInfoCategory variant="text" onClick={handleSuitsDog}>
+              나와 맞는 강아지 찾기
+            </AdoptionInfoCategory>
+            <AdoptionInfoCategory variant="text" onClick={handleConsiderBefore}>
+              입양전 고려할 것
+            </AdoptionInfoCategory>
+            <AdoptionInfoCategory
+              variant="text"
+              onClick={handleAdoptionProgress}
+            >
+              보호소를 통합 입양과정
+            </AdoptionInfoCategory>
+            <AdoptionInfoCategory variant="text" onClick={handleNecessaryItems}>
+              필요한 물품
+            </AdoptionInfoCategory>
+            <AdoptionInfoCategory variant="text" onClick={handleAfterAdoption}>
+              입양 후 과정
+            </AdoptionInfoCategory>
           </AdoptionInfoCategoryWrapper>
         </AdoptionInfoHead>
 
         {/* contents */}
-        <TextContents>
+        <TextContents ref={suitsDog}>
           <TextTitle>나와 맞는 강아지 찾기</TextTitle>
           <span>
             명백홈에서는 입양자분의 환경과 성향을 고려하여 최고의 짝꿍을 찾아
@@ -193,7 +233,7 @@ const Home = () => {
         </TextContents>
 
         {/* 입양전 고려할 것 */}
-        <TextContents>
+        <TextContents ref={considerBefore}>
           <TextTitle>입양전 고려할 것</TextTitle>
           <NumberRow>
             <RowNumber>01</RowNumber>
@@ -267,7 +307,7 @@ const Home = () => {
         </TextContents>
 
         {/* 보호소를 통한 입양과정 안내 */}
-        <TextContents>
+        <TextContents ref={adoptionProgress}>
           <TextTitle>보호소를 통한 입양과정 안내</TextTitle>
           <NumberRow>
             <RowNumber>01</RowNumber>
@@ -306,7 +346,7 @@ const Home = () => {
         </TextContents>
 
         {/* 입양 전후 준비할 물품 안내 */}
-        <TextContents>
+        <TextContents ref={necessaryItems}>
           <TextTitle>입양 전후 준비할 물품 안내</TextTitle>
           <NumberRow>
             <RowNumber>01</RowNumber>
@@ -403,9 +443,33 @@ const Home = () => {
             </RowText>
           </NumberRow>
         </TextContents>
+
+        {/* 입양 전후 준비할 물품 안내 */}
+        <TextContents ref={afterAdoption}>
+          <TextTitle>입양 후 적응과정 안내</TextTitle>
+          <NumberRow>
+            <RowNumber>01</RowNumber>
+            <RowText>강아지는 하나의 생명체입니다.</RowText>
+          </NumberRow>
+
+          <NumberRow>
+            <RowNumber>02</RowNumber>
+            <RowText>
+              충분한 적응시간이 필요하며, 원치않는 접촉, 산책, 식사를 강요하지
+              않는 것이 좋습니다.
+            </RowText>
+          </NumberRow>
+
+          <NumberRow>
+            <RowNumber>03</RowNumber>
+            <RowText>
+              원하는 대로 행동하지 않는다고 강아지를 다그치지 말아야합니다.
+            </RowText>
+          </NumberRow>
+        </TextContents>
       </HomeContents>
     </HomeContainer>
   );
 };
 
-export default Home;
+export default Info;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 import DogItem from "components/molecules/DogItem";
@@ -98,6 +98,14 @@ const goToSurveyPage = () => {
 };
 
 const MyPage = () => {
+  const [wishList, setWishList] = useState([]);
+  const getWishList = localStorage.getItem("wishList");
+
+  useEffect(() => {
+    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
+    setWishList(parseWishList);
+  }, [getWishList]);
+
   return (
     <MyPageContainer>
       <BannerContainer>
@@ -157,8 +165,15 @@ const MyPage = () => {
             찜꽁한 유기반려견
           </span>
           <DogItemContainer>
-            <DogItem />
-            <DogItem />
+            {wishList.map((dog) => (
+              <DogItem data={dog} />
+            ))}
+
+            {wishList.length === 0 && (
+              <span style={{ margin: "50px", width: "100%" }}>
+                찜콩한 유기반려견이 없습니다.
+              </span>
+            )}
           </DogItemContainer>
         </TextContents>
       </HomeContents>

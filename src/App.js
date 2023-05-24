@@ -8,47 +8,47 @@ import { ThemeProvider } from "@mui/material/styles";
 import Layout from "components/molecules/Layout";
 
 import HomePage from "components/pages/Home";
-import SearchPage from "components/pages/Search";
 import SurveyCompletePage from "components/pages/SurveyComplete";
 import SurveyPage from "components/pages/Survey";
-
+import InfoPage from "components/pages/Info";
 import MyPage from "components/pages/MyPage";
-import LoginPage from "components/pages/Login";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
     <CustomRouter history={customHistory}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyle />
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path={`/`} element={<HomePage />} />
-            <Route path={process.env.PUBLIC_URL + `/`} element={<HomePage />} />
-            <Route
-              path={process.env.PUBLIC_URL + `/search`}
-              element={<SearchPage />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + `/surveyComplete`}
-              element={<SurveyCompletePage />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + `/survey`}
-              element={<SurveyPage />}
-            />
+        <SnackbarProvider>
+          <CssBaseline />
+          <GlobalStyle />
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path={`/`} element={<HomePage />} />
+              <Route
+                path={process.env.PUBLIC_URL + `/`}
+                element={<HomePage />}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + `/surveyComplete`}
+                element={<SurveyCompletePage />}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + `/info`}
+                element={<InfoPage />}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + `/survey`}
+                element={<SurveyPage />}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + `/myPage`}
+                element={<MyPage />}
+              />
+            </Route>
 
-            <Route
-              path={process.env.PUBLIC_URL + `/myPage`}
-              element={<MyPage />}
-            />
-          </Route>
-          <Route
-            path={process.env.PUBLIC_URL + `/login`}
-            element={<LoginPage />}
-          />
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Routes>
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Routes>
+        </SnackbarProvider>
       </ThemeProvider>
     </CustomRouter>
   );

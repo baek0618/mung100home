@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import { useSnackbar } from "notistack";
 
 const ModalContainer = styled("div")`
   display: flex;
@@ -36,6 +37,58 @@ const keyValue = (key, value) => {
 };
 
 const ItemModal = ({ isOpen, handleClose, data }) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const [isWishList, setIsWishList] = useState(false);
+
+  useEffect(() => {
+    const getWishList = localStorage.getItem("wishList");
+    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
+    let targetIndex = -1;
+    parseWishList.forEach((item, index) => {
+      if (
+        item["공고고유번호"] &&
+        item["공고고유번호"] === data["공고고유번호"]
+      ) {
+        targetIndex = index;
+      }
+    });
+
+    let isExist = targetIndex !== -1;
+    if (isExist) {
+      setIsWishList(true);
+    }
+  }, []);
+
+  const handleFavorite = () => {
+    const getWishList = localStorage.getItem("wishList");
+    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
+    let targetIndex = -1;
+
+    parseWishList.forEach((item, index) => {
+      if (
+        item["공고고유번호"] &&
+        item["공고고유번호"] === data["공고고유번호"]
+      ) {
+        targetIndex = index;
+      }
+    });
+
+    let isExist = targetIndex !== -1;
+    if (isExist) {
+      parseWishList.splice(targetIndex, 1);
+      enqueueSnackbar("반려견 찜콩을 취소하였습니다.", { variant: "success" });
+      setIsWishList(false);
+    } else {
+      parseWishList.push(data);
+      enqueueSnackbar("반려견을 찜콩하였습니다.", { variant: "success" });
+      setIsWishList(true);
+    }
+
+    const stringWishList = JSON.stringify(parseWishList);
+    localStorage.setItem("wishList", stringWishList);
+  };
+
   return (
     <Modal
       open={isOpen}
@@ -99,7 +152,13 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
             />
             {keyValue("보호소명", data["보호소명"])}
             {keyValue("보호소 전화번호", data["보호소전화번호"])}
-            <Button sx={{ width: "100%", mt: "20px" }} endIcon={<span>♥</span>}>
+            <Button
+              sx={{ width: "100%", mt: "20px" }}
+              endIcon={
+                <span style={{ color: isWishList ? "#d32f2f" : "" }}>♥</span>
+              }
+              onClick={handleFavorite}
+            >
               찜
             </Button>
           </div>
