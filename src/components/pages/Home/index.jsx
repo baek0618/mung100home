@@ -37,7 +37,7 @@ const BannerTitle = styled("div")`
   font-size: 4.5831rem;
   font-weight: bold;
   @media all and (max-width: 1024px) {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 `;
 const HomeContents = styled("div")`
@@ -298,6 +298,7 @@ const Home = () => {
               background: "white",
               color: "#5f49a6",
               width: "380px",
+              maxWidth: "80%",
               padding: "0px 100px",
               mt: "60px",
               ":hover": {

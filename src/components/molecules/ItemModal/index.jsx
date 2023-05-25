@@ -14,8 +14,20 @@ const ModalContainer = styled("div")`
   flex-direction: column;
   position: relative;
   justify-content: center;
+  max-width: 90%;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    padding: 20px 30px;
+    height: auto;
+  }
 `;
 
+const DogContent = styled("div")`
+  display: flex;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
 const XButton = styled(Button)`
   position: absolute;
   top: 30px;
@@ -25,6 +37,30 @@ const XButton = styled(Button)`
   height: 40px;
   font-size: 2.5rem;
   font-weight: bold;
+`;
+const DogImage = styled("div")`
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media all and (max-width: 1024px) {
+    width: 100%;
+    height: 260px;
+  }
+`;
+
+const DogInfo = styled("div")`
+  width: 60%;
+  height: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+
+  @media all and (max-width: 1024px) {
+    width: 100%;
+    padding: 20px;
+  }
 `;
 
 const keyValue = (key, value) => {
@@ -108,16 +144,8 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
         >
           강아지 정보
         </div>
-        <div style={{ display: "flex" }}>
-          <div
-            style={{
-              width: "40%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+        <DogContent>
+          <DogImage>
             <img
               src={data["이미지경로"]}
               alt=""
@@ -128,16 +156,8 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
                 background: "#b1b1b1",
               }}
             />
-          </div>
-          <div
-            style={{
-              width: "60%",
-              height: "100%",
-              paddingLeft: "50px",
-              paddingRight: "50px",
-              paddingTop: "20px",
-            }}
-          >
+          </DogImage>
+          <DogInfo>
             {keyValue("공고 번호", data["공고고유번호"])}
             {keyValue("품종", data["품종"])}
             {keyValue("성별/중성화", `${data["성별"]}/${data["중성화여부"]}`)}
@@ -163,8 +183,8 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
             >
               찜
             </Button>
-          </div>
-        </div>
+          </DogInfo>
+        </DogContent>
         <XButton onClick={handleClose} variant="text">
           ×
         </XButton>

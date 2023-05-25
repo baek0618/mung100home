@@ -140,6 +140,7 @@ const SurveyComplete = () => {
               background: "white",
               color: "#5f49a6",
               width: "380px",
+              maxWidth: "80%",
               padding: "0px 100px",
               mt: "60px",
               ":hover": {
