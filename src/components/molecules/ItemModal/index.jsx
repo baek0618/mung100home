@@ -46,7 +46,7 @@ const DogImage = styled("div")`
   justify-content: center;
   @media all and (max-width: 1024px) {
     width: 100%;
-    height: 260px;
+    height: 240px;
   }
 `;
 
@@ -62,15 +62,26 @@ const DogInfo = styled("div")`
     padding: 20px;
   }
 `;
+const RowBox = styled("div")`
+  display: flex;
+  font-size: 1.125rem;
+  margin-bottom: 14px;
+  @media all and (max-width: 1024px) {
+    margin-bottom: 7px;
+  }
+`;
+const CustomDivider = styled(Divider)`
+  @media all and (max-width: 1024px) {
+    margin: 20px 0;
+  }
+`;
 
 const keyValue = (key, value) => {
   return (
-    <div
-      style={{ display: "flex", fontSize: "1.125rem", marginBottom: "14px" }}
-    >
+    <RowBox>
       <div style={{ width: "40%", color: "#737373" }}>{key}</div>
       <div style={{ width: "60%", color: "#000000" }}>{value}</div>
-    </div>
+    </RowBox>
   );
 };
 
@@ -164,7 +175,7 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
             {keyValue("추정 나이", data["나이"])}
             {keyValue("몸무게", data["체중"])}
             {keyValue("모색", data["색상"])}
-            <Divider
+            <CustomDivider
               sx={{
                 width: "100%",
                 height: "1px",
