@@ -11,6 +11,7 @@ const FooterContainer = styled("div")`
   align-self: flex-end;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
 `;
 
 const FooterContents = styled("div")`
@@ -18,12 +19,12 @@ const FooterContents = styled("div")`
   flex-direction: column;
   max-width: 1200px;
   width: 100%;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #3f3f3f;
 `;
 
 const Title = styled("div")`
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: bold;
   margin-bottom: 10px;
 `;

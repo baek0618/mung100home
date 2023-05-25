@@ -22,6 +22,7 @@ const BannerContainer = styled("div")`
   background-color: tan;
   background: url("./img/SearchBanner.png") no-repeat;
   background-size: cover;
+  padding: 0 20px;
 `;
 const BannerContents = styled("div")`
   display: flex;
@@ -32,7 +33,13 @@ const BannerContents = styled("div")`
   color: white;
   align-items: center;
 `;
-
+const BannerTitle = styled("div")`
+  font-size: 4.5831rem;
+  font-weight: bold;
+  @media all and (max-width: 1024px) {
+    font-size: 3rem;
+  }
+`;
 const HomeContents = styled("div")`
   display: flex;
   flex-direction: column;
@@ -47,11 +54,14 @@ const TextContents = styled("div")`
   max-width: 1200px;
   border-top: 1px solid #c8c8c8;
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
+  @media all and (max-width: 1024px) {
+    padding: 25px 20px;
+  }
 `;
 const TextTitle = styled("span")`
   margin-bottom: 20px;
-  font-size: 37px;
+  font-size: 2.313rem;
   font-weight: bold;
 `;
 
@@ -60,6 +70,10 @@ const DogTypeWrapper = styled("div")`
   justify-content: space-between;
   padding: 40px 0;
   margin-top: 20px;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const DogType = styled("div")`
   width: 300px;
@@ -71,6 +85,12 @@ const DogType = styled("div")`
   align-items: center;
   border-radius: 26px;
   box-shadow: 0 0 4px 0px gray;
+
+  @media all and (max-width: 1024px) {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
 `;
 const DogImage = styled("img")`
   width: 55%;
@@ -79,7 +99,7 @@ const DogImage = styled("img")`
 `;
 const DogName = styled("div")`
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   margin-top: 20px;
 `;
@@ -91,6 +111,10 @@ const DogItemContainer = styled("div")`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 4%;
   grid-row-gap: 20px;
+
+  @media all and (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const SurveyButton = styled(Button)`
@@ -109,7 +133,11 @@ const AdoptionButtonWrapper = styled("div")`
 const AdoptionInfoButton = styled(Button)`
   width: 30%;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 1.188rem;
+  @media all and (max-width: 1024px) {
+    width: 31%;
+    font-size: 0.92rem;
+  }
 `;
 const PaginationWrapper = styled("div")`
   width: 100%;
@@ -118,6 +146,11 @@ const PaginationWrapper = styled("div")`
 `;
 const CustomPagination = styled(Pagination)`
   margin-top: 50px;
+`;
+const GoToSurveyButton = styled(Button)`
+  @media all and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const goToSurveyPage = () => {
@@ -250,17 +283,17 @@ const Home = () => {
     <SearchContainer>
       <BannerContainer>
         <BannerContents>
-          <span style={{ fontSize: "55pt", fontWeight: "bold" }}>
+          <BannerTitle>
             당신에게 딱 맞는
             <br />
             유기 반려견을 찾아보세요!
-          </span>
-          <span style={{ fontSize: "26px", marginTop: "14px" }}>
+          </BannerTitle>
+          <span style={{ fontSize: "1.625rem", marginTop: "14px" }}>
             유기견에게 새로운 우주를 찾아주기 위한 입양자 설문을 시작해볼까요?
           </span>
           <Button
             sx={{
-              fontSize: "72px",
+              fontSize: "4.5rem",
               fontWeight: "1000",
               background: "white",
               color: "#5f49a6",
@@ -291,7 +324,7 @@ const Home = () => {
               <br />
               설문을 완료하신 후, 아래 유형을 눌러 특징을 확인해보세요!
             </span>
-            <Button
+            <GoToSurveyButton
               variant="text"
               sx={{ p: "5px 20px" }}
               endIcon={<img src="./img/icons/recom_arrow.png" alt="" />}
@@ -300,7 +333,7 @@ const Home = () => {
               <span style={{ color: "#5f49a6", textDecoration: "underline" }}>
                 입양자 설문하러가기
               </span>
-            </Button>
+            </GoToSurveyButton>
           </div>
 
           <DogTypeWrapper>

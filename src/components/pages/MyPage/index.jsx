@@ -21,6 +21,7 @@ const BannerContainer = styled("div")`
   background-color: tan;
   background: url("./img/SearchBanner.png") no-repeat;
   background-size: cover;
+  padding: 0 20px;
 `;
 const BannerContents = styled("div")`
   display: flex;
@@ -45,17 +46,24 @@ const TextContents = styled("div")`
   max-width: 1200px;
   border-top: 1px solid #c8c8c8;
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
+  @media all and (max-width: 1024px) {
+    padding: 25px 20px;
+  }
 `;
 const TextTitle = styled("span")`
   margin-bottom: 20px;
-  font-size: 37px;
+  font-size: 2.313rem;
   font-weight: bold;
 `;
 const DogType = styled("div")`
   display: flex;
   align-items: center;
   width: 300px;
+  @media all and (max-width: 1024px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 const DogImage = styled("img")`
   height: 100px;
@@ -64,7 +72,7 @@ const DogImage = styled("img")`
 `;
 const DogName = styled("div")`
   color: white;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
 `;
 const DogItemContainer = styled("div")`
@@ -74,6 +82,10 @@ const DogItemContainer = styled("div")`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 4%;
   grid-row-gap: 20px;
+
+  @media all and (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const MyDogType = styled("div")`
@@ -85,12 +97,28 @@ const MyDogType = styled("div")`
   display: flex;
   align-items: center;
   position: relative;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    height: 240px;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+const ReSurveyButton = styled(Button)`
+  @media all and (max-width: 1024px) {
+    display: none;
+  }
 `;
 const MyDogText = styled("div")`
   display: flex;
   flex-direction: column;
   padding-left: 50px;
   color: white;
+  @media all and (max-width: 1024px) {
+    padding-left: 0px;
+    margin-top: 20px;
+  }
 `;
 
 const goToSurveyPage = () => {
@@ -110,10 +138,10 @@ const MyPage = () => {
     <MyPageContainer>
       <BannerContainer>
         <BannerContents>
-          <span style={{ fontSize: "40pt", fontWeight: "bold" }}>
+          <span style={{ fontSize: "3.3331rem", fontWeight: "bold" }}>
             마이페이지
           </span>
-          <span style={{ fontSize: "24pt", marginTop: "14px" }}>
+          <span style={{ fontSize: "2rem", marginTop: "14px" }}>
             찜한 유기반려견의 정보를 모아보세요!
           </span>
         </BannerContents>
@@ -137,27 +165,27 @@ const MyPage = () => {
                 아래 목록은 설문결과가 반영된 목록입니다.
               </span>
             </MyDogText>
-            <Button
+            <ReSurveyButton
               variant="text"
               style={{
                 justifySelf: "flex-end",
                 alignSelf: "flex-end",
                 position: "absolute",
                 right: "30px",
-                fontSize: "14px",
+                fontSize: "0.875rem",
                 marginBottom: "5px",
               }}
               onClick={goToSurveyPage}
             >
               <span style={{ color: "white" }}>{`진단 다시 받기 >`}</span>
-            </Button>
+            </ReSurveyButton>
           </MyDogType>
         </TextContents>
 
         <TextContents>
           <span
             style={{
-              fontSize: "20px",
+              fontSize: "1.25rem",
               marginBottom: "20px",
               fontWeight: "bold",
             }}

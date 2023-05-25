@@ -15,12 +15,22 @@ const SelectWrapper = styled("div")`
   display: flex;
   justify-content: space-between;
   width: 80%;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 `;
 const RowBox = styled("div")`
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const FilterItemButtonWrapper = styled("div")`
   display: flex;
@@ -30,6 +40,12 @@ const FilterItemButton = styled(Button)`
   margin-right: 20px;
   padding: 6px 25px;
   border-radius: 16px;
+`;
+const SearchButton = styled(Button)`
+  @media all and (max-width: 1024px) {
+    margin-top: 20px;
+    width: 100%;
+  }
 `;
 
 const SearchFilter = ({ changeFilter }) => {
@@ -101,7 +117,7 @@ const SearchFilter = ({ changeFilter }) => {
             items={["온순", "상관없음"]}
           />
         </SelectWrapper>
-        <Button sx={{ width: "160px" }}>검색</Button>
+        <SearchButton sx={{ width: "160px" }}>검색</SearchButton>
       </RowBox>
 
       <RowBox style={{ marginTop: "20px" }}>
@@ -109,7 +125,7 @@ const SearchFilter = ({ changeFilter }) => {
           {gender && (
             <FilterItemButton
               onClick={() => setGender("")}
-              endIcon={<div stlye={{ fontSize: "20px" }}>×</div>}
+              endIcon={<div stlye={{ fontSize: "1.25rem" }}>×</div>}
             >
               {gender}
             </FilterItemButton>
@@ -117,7 +133,7 @@ const SearchFilter = ({ changeFilter }) => {
           {size && (
             <FilterItemButton
               onClick={() => setSize("")}
-              endIcon={<div stlye={{ fontSize: "20px" }}>×</div>}
+              endIcon={<div stlye={{ fontSize: "1.25rem" }}>×</div>}
             >
               {size}
             </FilterItemButton>
@@ -125,7 +141,7 @@ const SearchFilter = ({ changeFilter }) => {
           {age && (
             <FilterItemButton
               onClick={() => setAge("")}
-              endIcon={<div stlye={{ fontSize: "20px" }}>×</div>}
+              endIcon={<div stlye={{ fontSize: "1.25rem" }}>×</div>}
             >
               {age}
             </FilterItemButton>
@@ -133,7 +149,7 @@ const SearchFilter = ({ changeFilter }) => {
           {color && (
             <FilterItemButton
               onClick={() => setColor("")}
-              endIcon={<div stlye={{ fontSize: "20px" }}>×</div>}
+              endIcon={<div stlye={{ fontSize: "1.25rem" }}>×</div>}
             >
               {color}
             </FilterItemButton>
@@ -141,7 +157,7 @@ const SearchFilter = ({ changeFilter }) => {
           {personality && (
             <FilterItemButton
               onClick={() => setPersonality("")}
-              endIcon={<div stlye={{ fontSize: "20px" }}>×</div>}
+              endIcon={<div stlye={{ fontSize: "1.25rem" }}>×</div>}
             >
               {personality}
             </FilterItemButton>

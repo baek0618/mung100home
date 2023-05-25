@@ -17,7 +17,27 @@ const BannerContainer = styled("div")`
   background-color: tan;
   background: url("./img/info_home.png") no-repeat;
   background-size: cover;
+  padding: 0 20px;
+  @media all and (max-width: 1024px) {
+    height: 350px;
+  }
 `;
+const BannerTitle = styled("div")`
+  font-size: 4.5831rem;
+  font-weight: bold;
+  @media all and (max-width: 1024px) {
+    font-size: 3rem;
+  }
+`;
+
+const BannerText = styled("span")`
+  font-size: 1.9169rem;
+  margin-top: 10px;
+  @media all and (max-width: 1024px) {
+    font-size: 1.4rem;
+  }
+`;
+
 const BannerContents = styled("div")`
   display: flex;
   flex-direction: column;
@@ -46,11 +66,14 @@ const AdoptionInfoCategoryWrapper = styled("div")`
   justify-content: space-evenly;
   max-width: 1200px;
   width: 100%;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 const AdoptionInfoCategory = styled(Button)`
   /* width: 200px; */
   border-radius: 25px;
-  font-size: 19px;
+  font-size: 1.188rem;
   font-weight: bold;
   padding: 10px 25px;
   color: #bababa;
@@ -67,17 +90,20 @@ const TextContents = styled("div")`
   max-width: 1200px;
   border-top: 1px solid #c8c8c8;
   padding: 50px 150px;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: normal;
   line-height: 24pt;
   font-family: "NotoSansKR-Regular";
+  @media all and (max-width: 1024px) {
+    padding: 50px 20px;
+  }
 `;
 
 const TextTitle = styled("span")`
   color: #5f49a6;
   margin-bottom: 20px;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 2.25rem;
   margin-bottom: 40px;
 `;
 const NumberRow = styled("div")`
@@ -86,25 +112,29 @@ const NumberRow = styled("div")`
 `;
 const RowNumber = styled("div")`
   width: 60px;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: bold;
   color: #5f49a6;
   line-height: normal;
 `;
 const RowText = styled("div")`
   width: calc(100% - 60px);
-  font-size: 19px;
+  font-size: 1.188rem;
   line-height: normal;
   color: #333333;
 `;
 const SubTitle = styled("div")`
-  font-size: 22px;
+  font-size: 1.375rem;
   margin-bottom: 10px;
 `;
 const DogTypeWrapper = styled("div")`
   display: flex;
   justify-content: space-between;
   padding: 40px 0;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const DogType = styled("div")`
   width: 240px;
@@ -116,6 +146,11 @@ const DogType = styled("div")`
   align-items: center;
   border-radius: 26px;
   box-shadow: 0 0 4px 0px gray;
+  @media all and (max-width: 1024px) {
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+  }
 `;
 const DogImage = styled("img")`
   width: 65%;
@@ -124,7 +159,7 @@ const DogImage = styled("img")`
 `;
 const DogName = styled("div")`
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   margin-top: 20px;
 `;
@@ -156,12 +191,10 @@ const Info = () => {
     <HomeContainer>
       <BannerContainer>
         <BannerContents>
-          <span style={{ fontSize: "55pt", fontWeight: "bold" }}>
-            Adoption Information
-          </span>
-          <span style={{ fontSize: "23pt", marginTop: "10px" }}>
+          <BannerTitle>Adoption Information</BannerTitle>
+          <BannerText>
             유기견을 입양하기 전의 충분한 숙고는 파양을 방지합니다.
-          </span>
+          </BannerText>
         </BannerContents>
       </BannerContainer>
       <HomeContents>
@@ -169,7 +202,7 @@ const Info = () => {
         <AdoptionInfoHead>
           <span
             style={{
-              fontSize: "37px",
+              fontSize: "2.313rem",
               fontWeight: "bold",
               marginBottom: "40px",
               color: "#3f3f3f",

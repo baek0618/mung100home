@@ -47,11 +47,11 @@ const TextContents = styled("div")`
   max-width: 1200px;
   border-top: 1px solid #c8c8c8;
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
 `;
 const TextTitle = styled("span")`
   margin-bottom: 20px;
-  font-size: 37px;
+  font-size: 2.313rem;
   font-weight: bold;
 `;
 
@@ -79,7 +79,7 @@ const DogImage = styled("img")`
 `;
 const DogName = styled("div")`
   color: #3f3f3f;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   margin-top: 20px;
 `;
@@ -109,7 +109,7 @@ const AdoptionButtonWrapper = styled("div")`
 const AdoptionInfoButton = styled(Button)`
   width: 30%;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 1.188rem;
 `;
 const PaginationWrapper = styled("div")`
   width: 100%;
@@ -250,17 +250,17 @@ const Search = () => {
     <SearchContainer>
       <BannerContainer>
         <BannerContents>
-          <span style={{ fontSize: "55pt", fontWeight: "bold" }}>
+          <span style={{ fontSize: "4.5831rem", fontWeight: "bold" }}>
             당신에게 딱 맞는
             <br />
             유기 반려견을 찾아보세요!
           </span>
-          <span style={{ fontSize: "26px", marginTop: "14px" }}>
+          <span style={{ fontSize: "1.625rem", marginTop: "14px" }}>
             유기견에게 새로운 우주를 찾아주기 위한 입양자 설문을 시작해볼까요?
           </span>
           <Button
             sx={{
-              fontSize: "72px",
+              fontSize: "4.5rem",
               fontWeight: "1000",
               background: "white",
               color: "#5f49a6",

@@ -8,9 +8,14 @@ const SelectContainer = styled("div")`
   display: flex;
   flex-direction: column;
   color: #3f3f3f;
+  width: 160px;
+  @media all and (max-width: 1024px) {
+    margin-bottom: 20px;
+    width: 100%;
+  }
 `;
 const LabelText = styled("div")`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 5px;
 `;
@@ -21,7 +26,7 @@ const SelectLabels = ({ value, handleChange, label, items }) => {
       <LabelText>{label}</LabelText>
       <Select
         id={label}
-        sx={{ width: "160px", color: "#333333" }}
+        sx={{ width: "100%", color: "#333333" }}
         value={value}
         onChange={handleChange}
         defaultValue={""}

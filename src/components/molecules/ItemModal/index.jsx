@@ -23,13 +23,15 @@ const XButton = styled(Button)`
   color: black;
   width: 40px;
   height: 40px;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
 `;
 
 const keyValue = (key, value) => {
   return (
-    <div style={{ display: "flex", fontSize: "18px", marginBottom: "14px" }}>
+    <div
+      style={{ display: "flex", fontSize: "1.125rem", marginBottom: "14px" }}
+    >
       <div style={{ width: "40%", color: "#737373" }}>{key}</div>
       <div style={{ width: "60%", color: "#000000" }}>{value}</div>
     </div>
@@ -99,7 +101,7 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
         <div
           style={{
             color: "black",
-            fontSize: "37px",
+            fontSize: "2.313rem",
             fontWeight: "bold",
             marginBottom: "20px",
           }}

@@ -102,7 +102,7 @@ theme = createTheme(theme, {
     MuiButtonBase: {
       styleOverrides: {
         root: {
-          fontSize: "15px",
+          fontSize: "0.938rem",
         },
       },
     },
@@ -115,7 +115,7 @@ theme = createTheme(theme, {
         root: {
           boxShadow: "none",
           padding: "12px 10px",
-          fontSize: "15px",
+          fontSize: "0.938rem",
           fontWeight: "normal",
           textTransform: "none",
           lineHeight: "1.4",
@@ -171,7 +171,7 @@ theme = createTheme(theme, {
     MuiToggleButton: {
       styleOverrides: {
         root: {
-          fontSize: "15px",
+          fontSize: "0.938rem",
           boxSizing: "border-box",
           textTransform: "none",
           padding: "8px 8px",
@@ -323,7 +323,7 @@ theme = createTheme(theme, {
     MuiRadio: {
       styleOverrides: {
         root: {
-          fontSize: "15px",
+          fontSize: "0.938rem",
           "&.Mui-checked": {
             color: color.selected,
           },
@@ -395,7 +395,7 @@ theme = createTheme(theme, {
         root: {
           border: "none",
           color: theme.palette.secondary.main,
-          fontSize: "14px",
+          fontSize: "0.875rem",
           height: "50px",
           padding: "10px",
           boxSizing: "border-box",

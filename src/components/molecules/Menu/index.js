@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import customHistory from "common/history";
+import Dialog from "@mui/material/Dialog";
 
 const HeadContainer = styled("div")`
   display: flex;
@@ -14,21 +15,37 @@ const HeadContainer = styled("div")`
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  @media all and (max-width: 1024px) {
+    height: 120px;
+  }
 `;
 const HeadWrapper = styled("div")`
   display: flex;
   max-width: 1200px;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  @media all and (max-width: 1024px) {
+    align-items: center;
+  }
 `;
 const Logo = styled(IconButton)`
   width: 340px;
   height: 80px;
+
+  @media all and (max-width: 1024px) {
+    width: 300px;
+    height: 60px;
+  }
 `;
 const MenuContainer = styled("div")`
   display: flex;
   flex-direction: column;
   flex: 1;
+  @media all and (max-width: 1024px) {
+    display: none;
+  }
 `;
 const UserMenuWrapper = styled("div")`
   display: flex;
@@ -43,6 +60,10 @@ const MenuWrapper = styled("div")`
   height: 50px;
   width: 100%;
   justify-content: flex-end;
+
+  @media all and (max-width: 1024px) {
+    display: none;
+  }
 `;
 const MenuButton = styled(Button)`
   width: 100px;
@@ -55,18 +76,43 @@ const Divider = styled("div")`
   background-color: #e5e5e5;
   height: 80%;
 `;
+const HamburgerMenu = styled(IconButton)`
+  width: 45px;
+  height: 45px;
+  display: none;
+  @media all and (max-width: 1024px) {
+    display: flex;
+  }
+`;
 
-const goToHomePage = () => {
-  customHistory.push(process.env.PUBLIC_URL + `/`);
-};
-const goToMyPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/myPage");
-};
-const goToInfoPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/info");
-};
+const MobileMenuContainer = styled("div")`
+  width: 300px;
+  background-color: white;
+  border-radius: 6px;
+`;
+const MenuItem = styled(Button)`
+  width: 100%;
+  padding: 20px 25px;
+  font-size: 1.125rem;
+  font-weight: bold;
+`;
 
 const Menu = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const goToHomePage = () => {
+    customHistory.push(process.env.PUBLIC_URL + `/`);
+    setDialogOpen(false);
+  };
+  const goToMyPage = () => {
+    customHistory.push(process.env.PUBLIC_URL + "/myPage");
+    setDialogOpen(false);
+  };
+  const goToInfoPage = () => {
+    customHistory.push(process.env.PUBLIC_URL + "/info");
+    setDialogOpen(false);
+  };
+
   return (
     <HeadContainer>
       <HeadWrapper>
@@ -122,7 +168,28 @@ const Menu = () => {
             </MenuButton>
           </MenuWrapper>
         </MenuContainer>
+        <HamburgerMenu onClick={() => setDialogOpen(true)}>
+          <img
+            style={{ width: "100%", height: "100%" }}
+            src="./img/icons/hamburger.png"
+            alt=""
+          />
+        </HamburgerMenu>
       </HeadWrapper>
+
+      <Dialog onClose={() => setDialogOpen(false)} open={dialogOpen}>
+        <MobileMenuContainer>
+          <MenuItem onClick={goToHomePage} variant="text">
+            유기견 검색
+          </MenuItem>
+          <MenuItem onClick={goToInfoPage} variant="text">
+            입양정보
+          </MenuItem>
+          <MenuItem onClick={goToMyPage} variant="text">
+            마이페이지
+          </MenuItem>
+        </MobileMenuContainer>
+      </Dialog>
     </HeadContainer>
   );
 };

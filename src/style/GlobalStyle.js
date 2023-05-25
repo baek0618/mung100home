@@ -3,7 +3,7 @@ import { Global, css, useTheme } from "@emotion/react";
 
 const setGlobalStyles = () => css`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-  @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
+  @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
   ::-webkit-scrollbar {
     max-width: 40px;
@@ -120,6 +120,7 @@ const setGlobalStyles = () => css`
     height: calc(var(--vh, 1vh) * 100);
     background-color: white;
     color: black;
+    font-size: 10px;
   }
   #root {
     height: 100%;
@@ -141,6 +142,15 @@ const setGlobalStyles = () => css`
     appearance: none;
     border: 0;
     outline: 0;
+  }
+  html {
+    @media all and (min-width: 1024px) {
+      font-size: 16px;
+    }
+
+    @media all and (max-width: 1024px) {
+      font-size: 12px;
+    }
   }
 `;
 

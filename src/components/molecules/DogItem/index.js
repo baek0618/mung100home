@@ -29,13 +29,13 @@ const DogData = styled("div")`
   display: flex;
   flex-direction: column;
   color: #748482;
-  font-size: 14px;
+  font-size: 0.875rem;
   padding: 8px 15px;
   text-align: left;
   width: 100%;
 `;
 const Name = styled("div")`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   color: #333333;
   margin-bottom: 6px;
@@ -47,7 +47,7 @@ const DogRank = styled("div")`
   border-radius: 50%;
   background-color: #643ace;
   color: white;
-  font-size: 15px;
+  font-size: 0.938rem;
   top: 10px;
   right: 10px;
   display: flex;
