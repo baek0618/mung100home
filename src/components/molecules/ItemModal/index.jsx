@@ -72,7 +72,17 @@ const RowBox = styled("div")`
 `;
 const CustomDivider = styled(Divider)`
   @media all and (max-width: 1024px) {
-    margin: 20px 0;
+    margin: 15px 0;
+  }
+`;
+const ModalTitle = styled("div")`
+  color: black;
+  font-size: 2.313rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  @media all and (max-width: 1024px) {
+    font-size: 1.8rem;
   }
 `;
 
@@ -145,16 +155,7 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <ModalContainer>
-        <div
-          style={{
-            color: "black",
-            fontSize: "2.313rem",
-            fontWeight: "bold",
-            marginBottom: "20px",
-          }}
-        >
-          강아지 정보
-        </div>
+        <ModalTitle>강아지 정보</ModalTitle>
         <DogContent>
           <DogImage>
             <img

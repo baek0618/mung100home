@@ -35,7 +35,7 @@ const Logo = styled(IconButton)`
   height: 80px;
 
   @media all and (max-width: 1024px) {
-    width: 300px;
+    width: 260px;
     height: 60px;
   }
 `;
