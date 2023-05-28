@@ -41,6 +41,8 @@ code {
     url("style/fonts/notoSans/NotoSansKR-Bold.otf") format("truetype");
 }
 
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
 * {
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;

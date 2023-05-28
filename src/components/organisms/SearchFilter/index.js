@@ -72,7 +72,32 @@ const SearchFilter = ({ changeFilter }) => {
     setPersonality(event.target.value);
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   changeFilter({
+  //     gender,
+  //     size,
+  //     age,
+  //     color,
+  //     personality,
+  //   });
+  // }, [gender, size, age, color, personality]);
+
+  const handleInitFilter = () => {
+    setGender("");
+    setSize("");
+    setAge("");
+    setColor("");
+    setPersonality("");
+    changeFilter({
+      gender: "",
+      size: "",
+      age: "",
+      color: "",
+      personality: "",
+    });
+  };
+
+  const handleSearch = () => {
     changeFilter({
       gender,
       size,
@@ -80,7 +105,7 @@ const SearchFilter = ({ changeFilter }) => {
       color,
       personality,
     });
-  }, [gender, size, age, color, personality]);
+  };
 
   return (
     <SearchFilterContainer>
@@ -117,7 +142,9 @@ const SearchFilter = ({ changeFilter }) => {
             items={["온순", "상관없음"]}
           />
         </SelectWrapper>
-        <SearchButton sx={{ width: "160px" }}>검색</SearchButton>
+        <SearchButton onClick={handleSearch} sx={{ width: "160px" }}>
+          검색
+        </SearchButton>
       </RowBox>
 
       <RowBox style={{ marginTop: "20px" }}>
@@ -174,6 +201,7 @@ const SearchFilter = ({ changeFilter }) => {
           }
           sx={{ color: "#828282" }}
           variant="text"
+          onClick={handleInitFilter}
         >
           설정 초기화
         </Button>

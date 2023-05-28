@@ -25,6 +25,8 @@ const BannerContainer = styled("div")`
 const BannerTitle = styled("div")`
   font-size: 4.5831rem;
   font-weight: bold;
+  font-family: "Poppins", sans-serif;
+
   @media all and (max-width: 1024px) {
     font-size: 2.8rem;
   }

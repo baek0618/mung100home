@@ -1,0 +1,15 @@
+.sv_main.sv_default_css .sv_body {
+  border-color: #5f49a6;
+}
+
+.sv_main.sv_default_css input[type="button"],
+.sv_main.sv_default_css button {
+  background-color: #5f49a6;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sv_main.sv_default_css input[type="button"]:hover,
+.sv_main.sv_default_css button:hover {
+  background-color: rgba(95, 73, 166, 0.7);
+}

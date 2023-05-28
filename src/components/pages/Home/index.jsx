@@ -6,6 +6,7 @@ import SearchFilter from "components/organisms/SearchFilter";
 import Pagination from "@mui/material/Pagination";
 import customHistory from "common/history";
 import dummy from "common/db.json";
+import SurveyModal from "components/organisms/SurveyModal";
 
 const SearchContainer = styled("div")`
   display: flex;
@@ -153,9 +154,9 @@ const GoToSurveyButton = styled(Button)`
   }
 `;
 
-const goToSurveyPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/survey");
-};
+// const goToSurveyPage = () => {
+//   customHistory.push(process.env.PUBLIC_URL + "/survey");
+// };
 
 const Home = () => {
   const limit = 12;
@@ -163,6 +164,11 @@ const Home = () => {
   const [db, setDb] = useState(dummy);
   const [page, setPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openSurvey = () => {
+    setIsOpen(true);
+  };
 
   useEffect(() => {
     setCurrentItems(db.slice(0 + (page - 1) * limit, page * limit));
@@ -294,18 +300,19 @@ const Home = () => {
           <Button
             sx={{
               fontSize: "4.5rem",
-              fontWeight: "1000",
+              fontWeight: "800",
               background: "white",
               color: "#5f49a6",
               width: "380px",
               maxWidth: "80%",
               padding: "0px 100px",
+              fontFamily: `'Poppins', sans-serif`,
               mt: "60px",
               ":hover": {
                 color: "white",
               },
             }}
-            onClick={goToSurveyPage}
+            onClick={openSurvey}
           >
             Start!
           </Button>
@@ -329,7 +336,7 @@ const Home = () => {
               variant="text"
               sx={{ p: "5px 20px" }}
               endIcon={<img src="./img/icons/recom_arrow.png" alt="" />}
-              onClick={goToSurveyPage}
+              onClick={openSurvey}
             >
               <span style={{ color: "#5f49a6", textDecoration: "underline" }}>
                 입양자 설문하러가기
@@ -356,7 +363,7 @@ const Home = () => {
         <TextContents>
           <TextTitle>유기반려견 찾기</TextTitle>
           <span>입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.</span>
-          <SurveyButton>설문 START</SurveyButton>
+          <SurveyButton onClick={openSurvey}>설문 START</SurveyButton>
 
           <SearchFilter changeFilter={handleFilterState} />
 
@@ -411,6 +418,7 @@ const Home = () => {
           </AdoptionButtonWrapper>
         </TextContents>
       </HomeContents>
+      <SurveyModal isOpen={isOpen} handleClose={() => setIsOpen(false)} />
     </SearchContainer>
   );
 };
