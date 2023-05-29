@@ -105,12 +105,24 @@ const MyDogType = styled("div")`
   margin-top: 40px;
   position: relative;
   margin-bottom: 30px;
+  @media all and (max-width: 1024px) {
+    flex-direction: column;
+    height: 240px;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+  }
 `;
 const MyDogText = styled("div")`
   display: flex;
   flex-direction: column;
   padding-left: 50px;
   color: white;
+  @media all and (max-width: 1024px) {
+    padding-left: 0px;
+    margin-top: 20px;
+  }
 `;
 
 const DogImage = styled("img")`

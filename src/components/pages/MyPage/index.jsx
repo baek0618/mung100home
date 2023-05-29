@@ -107,8 +107,10 @@ const MyDogType = styled("div")`
     background-size: cover;
     align-items: center;
     justify-content: center;
+    padding: 0 30px;
   }
 `;
+
 const ReSurveyButton = styled(Button)`
   @media all and (max-width: 1024px) {
     display: none;
