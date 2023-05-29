@@ -7,6 +7,7 @@ import Pagination from "@mui/material/Pagination";
 import customHistory from "common/history";
 import dummy from "common/db.json";
 import SurveyModal from "components/organisms/SurveyModal";
+import { useSelector, useDispatch } from "react-redux";
 
 const SearchContainer = styled("div")`
   display: flex;
@@ -196,17 +197,11 @@ const goToInfoPage = () => {
 
 const Home = () => {
   const limit = 12;
-
+  const { aiResult } = useSelector((state) => state.dog);
   const [db, setDb] = useState(dummy);
   const [page, setPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-
-  const aiResult = localStorage.getItem("result")
-    ? JSON.parse(localStorage.getItem("result"))
-    : null;
-
-  console.log("aiResult", aiResult);
 
   const openSurvey = () => {
     setIsOpen(true);

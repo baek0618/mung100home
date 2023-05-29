@@ -8,49 +8,49 @@ import { ThemeProvider } from "@mui/material/styles";
 import Layout from "components/molecules/Layout";
 
 import HomePage from "components/pages/Home";
-import SurveyCompletePage from "components/pages/SurveyComplete";
-import SurveyPage from "components/pages/Survey";
 import InfoPage from "components/pages/Info";
 import MyPage from "components/pages/MyPage";
 import { SnackbarProvider } from "notistack";
+import { Provider } from "react-redux";
+import store from "store/index";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+
+export let persistor = persistStore(store);
 
 function App() {
   return (
-    <CustomRouter history={customHistory}>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider>
-          <CssBaseline />
-          <GlobalStyle />
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path={`/`} element={<HomePage />} />
-              <Route
-                path={process.env.PUBLIC_URL + `/`}
-                element={<HomePage />}
-              />
-              <Route
-                path={process.env.PUBLIC_URL + `/surveyComplete`}
-                element={<SurveyCompletePage />}
-              />
-              <Route
-                path={process.env.PUBLIC_URL + `/info`}
-                element={<InfoPage />}
-              />
-              <Route
-                path={process.env.PUBLIC_URL + `/survey`}
-                element={<SurveyPage />}
-              />
-              <Route
-                path={process.env.PUBLIC_URL + `/myPage`}
-                element={<MyPage />}
-              />
-            </Route>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <CustomRouter history={customHistory}>
+          <ThemeProvider theme={theme}>
+            <SnackbarProvider>
+              <CssBaseline />
+              <GlobalStyle />
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path={`/`} element={<HomePage />} />
+                  <Route
+                    path={process.env.PUBLIC_URL + `/`}
+                    element={<HomePage />}
+                  />
+                  <Route
+                    path={process.env.PUBLIC_URL + `/info`}
+                    element={<InfoPage />}
+                  />
+                  <Route
+                    path={process.env.PUBLIC_URL + `/myPage`}
+                    element={<MyPage />}
+                  />
+                </Route>
 
-            {/* <Route path="*" element={<NotFound />} /> */}
-          </Routes>
-        </SnackbarProvider>
-      </ThemeProvider>
-    </CustomRouter>
+                {/* <Route path="*" element={<NotFound />} /> */}
+              </Routes>
+            </SnackbarProvider>
+          </ThemeProvider>
+        </CustomRouter>
+      </PersistGate>
+    </Provider>
   );
 }
 

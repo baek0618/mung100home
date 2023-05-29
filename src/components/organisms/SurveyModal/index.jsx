@@ -1,15 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
+// import Button from "@mui/material/Button";
+// import Divider from "@mui/material/Divider";
 import { useSnackbar } from "notistack";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import { db } from "common/firebase";
-import { useStateValue } from "./StateProvider";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+// import { useStateValue } from "./StateProvider";
+// import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setSurvey, setAiResult } from "store/dog";
 
 import "survey-react/survey.css";
 import "./survey.css";
@@ -25,6 +27,8 @@ const SurveyContainer = styled("div")`
 
 const SurveyModal = ({ isOpen, handleClose }) => {
   const userCollection = db.collection("data_ugi");
+  const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   // const [{ basket, user }, dispatch] = useStateValue();
   // const [data_Re, datas] = useState([]);
@@ -41,7 +45,6 @@ const SurveyModal = ({ isOpen, handleClose }) => {
 
   const aiAnalysis = (results) => {
     const API_URL = "https://ugiugi-453cd.du.r.appspot.com/react_to_flask";
-    // const results = localStorage.getItem("survey");
     axios
       .post(
         API_URL,
@@ -57,10 +60,18 @@ const SurveyModal = ({ isOpen, handleClose }) => {
       .then((response) => {
         // datas(response.data);
         console.log("response", response.data);
-        localStorage.setItem("result", JSON.stringify(response.data));
+        dispatch(setAiResult(response.data));
+        enqueueSnackbar(
+          "AI 추천이 완료되었습니다. 마이페이지를 확인해주세요.",
+          { variant: "success" }
+        );
+
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
+        enqueueSnackbar("Error", { variant: "error" });
+        handleClose();
       });
   };
 
@@ -160,10 +171,9 @@ const SurveyModal = ({ isOpen, handleClose }) => {
   };
 
   const alertResults = useCallback((sender) => {
-    const results = JSON.stringify(sender.data);
-    console.log("resultsresults", results);
-    localStorage.setItem("survey", results);
-    aiAnalysis(results);
+    const results = sender.data;
+    dispatch(setSurvey(results));
+    aiAnalysis(JSON.stringify(sender.data));
   });
   const survey = new Model(json);
   survey.onComplete.add(alertResults);

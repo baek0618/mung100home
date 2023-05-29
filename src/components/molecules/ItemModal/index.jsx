@@ -4,6 +4,8 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import { useSnackbar } from "notistack";
+import { useSelector, useDispatch } from "react-redux";
+import { setWish } from "store/dog";
 
 const ModalContainer = styled("div")`
   display: flex;
@@ -95,16 +97,17 @@ const keyValue = (key, value) => {
   );
 };
 
-const ItemModal = ({ isOpen, handleClose, data, callback }) => {
+const ItemModal = ({ isOpen, handleClose, data }) => {
+  const dispatch = useDispatch();
+  const { wish } = useSelector((state) => state.dog);
+
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [isWishList, setIsWishList] = useState(false);
 
   useEffect(() => {
-    const getWishList = localStorage.getItem("wishList");
-    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
     let targetIndex = -1;
-    parseWishList.forEach((item, index) => {
+    wish.forEach((item, index) => {
       if (
         item["공고고유번호"] &&
         item["공고고유번호"] === data["공고고유번호"]
@@ -116,15 +119,16 @@ const ItemModal = ({ isOpen, handleClose, data, callback }) => {
     let isExist = targetIndex !== -1;
     if (isExist) {
       setIsWishList(true);
+    } else {
+      setIsWishList(false);
     }
-  }, []);
+  }, [wish, data]);
 
   const handleFavorite = () => {
-    const getWishList = localStorage.getItem("wishList");
-    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
+    const parseWishList = [...wish];
     let targetIndex = -1;
 
-    parseWishList.forEach((item, index) => {
+    wish.forEach((item, index) => {
       if (
         item["공고고유번호"] &&
         item["공고고유번호"] === data["공고고유번호"]
@@ -145,10 +149,7 @@ const ItemModal = ({ isOpen, handleClose, data, callback }) => {
     }
 
     const stringWishList = JSON.stringify(parseWishList);
-    localStorage.setItem("wishList", stringWishList);
-    if (callback) {
-      callback();
-    }
+    dispatch(setWish(parseWishList));
   };
 
   return (
@@ -169,6 +170,7 @@ const ItemModal = ({ isOpen, handleClose, data, callback }) => {
                 height: "100%",
                 objectFit: "contain",
                 background: "#b1b1b1",
+                maxHeight: "480px",
               }}
             />
           </DogImage>

@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import SearchFilter from "components/organisms/SearchFilter";
 import customHistory from "common/history";
 import SurveyModal from "components/organisms/SurveyModal";
+import { useSelector, useDispatch } from "react-redux";
+import { setWish } from "store/dog";
 
 const MyPageContainer = styled("div")`
   display: flex;
@@ -128,33 +130,18 @@ const MyDogText = styled("div")`
 // };
 
 const MyPage = () => {
+  const dispatch = useDispatch();
+  const { aiResult, wish } = useSelector((state) => state.dog);
   const [wishList, setWishList] = useState([]);
-  const getWishList = localStorage.getItem("wishList");
   const [isOpen, setIsOpen] = useState(false);
-
-  const aiResult = localStorage.getItem("result")
-    ? JSON.parse(localStorage.getItem("result"))
-    : null;
 
   const openSurvey = () => {
     setIsOpen(true);
   };
 
   useEffect(() => {
-    const parseWishList = localStorage.getItem("wishList")
-      ? JSON.parse(localStorage.getItem("wishList"))
-      : [];
-    setWishList(parseWishList);
-  }, []);
-
-  console.log("wishList", wishList);
-
-  const handleCallback = () => {
-    const parseWishList = localStorage.getItem("wishList")
-      ? JSON.parse(localStorage.getItem("wishList"))
-      : [];
-    setWishList(parseWishList);
-  };
+    setWishList(wish);
+  }, [wish]);
 
   return (
     <MyPageContainer>
@@ -230,7 +217,7 @@ const MyPage = () => {
           </span>
           <DogItemContainer>
             {wishList.map((dog) => (
-              <DogItem data={dog} callback={handleCallback} />
+              <DogItem data={dog} />
             ))}
 
             {wishList.length === 0 && (
