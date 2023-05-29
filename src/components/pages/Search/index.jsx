@@ -134,6 +134,10 @@ const Search = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const aiResult = localStorage.getItem("result");
+
+  console.log("aiResult", aiResult);
+
   const openSurvey = () => {
     setIsOpen(true);
   };
@@ -329,8 +333,17 @@ const Search = () => {
 
         <TextContents>
           <TextTitle>유기반려견 찾기</TextTitle>
-          <span>입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.</span>
-          <SurveyButton onClick={openSurvey}>설문 START</SurveyButton>
+
+          {aiResult ? (
+            " "
+          ) : (
+            <>
+              <span>
+                입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.
+              </span>
+              <SurveyButton onClick={openSurvey}>설문 START</SurveyButton>
+            </>
+          )}
 
           <SearchFilter changeFilter={handleFilterState} />
 

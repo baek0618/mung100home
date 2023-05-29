@@ -195,7 +195,7 @@ const SearchFilter = ({ changeFilter }) => {
           endIcon={
             <img
               src="./img/icons/reset.png"
-              style={{ width: "20px", height: "20px" }}
+              style={{ width: "18px", height: "18px", opacity: "0.75" }}
               alt=""
             />
           }

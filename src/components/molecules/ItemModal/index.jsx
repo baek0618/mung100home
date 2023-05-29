@@ -95,7 +95,7 @@ const keyValue = (key, value) => {
   );
 };
 
-const ItemModal = ({ isOpen, handleClose, data }) => {
+const ItemModal = ({ isOpen, handleClose, data, callback }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [isWishList, setIsWishList] = useState(false);
@@ -146,6 +146,9 @@ const ItemModal = ({ isOpen, handleClose, data }) => {
 
     const stringWishList = JSON.stringify(parseWishList);
     localStorage.setItem("wishList", stringWishList);
+    if (callback) {
+      callback();
+    }
   };
 
   return (

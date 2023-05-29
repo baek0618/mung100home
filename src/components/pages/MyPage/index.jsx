@@ -5,6 +5,7 @@ import DogItem from "components/molecules/DogItem";
 import IconButton from "@mui/material/IconButton";
 import SearchFilter from "components/organisms/SearchFilter";
 import customHistory from "common/history";
+import SurveyModal from "components/organisms/SurveyModal";
 
 const MyPageContainer = styled("div")`
   display: flex;
@@ -97,6 +98,7 @@ const MyDogType = styled("div")`
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 40px;
   @media all and (max-width: 1024px) {
     flex-direction: column;
     height: 240px;
@@ -121,18 +123,38 @@ const MyDogText = styled("div")`
   }
 `;
 
-const goToSurveyPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/survey");
-};
+// const goToSurveyPage = () => {
+//   customHistory.push(process.env.PUBLIC_URL + "/survey");
+// };
 
 const MyPage = () => {
   const [wishList, setWishList] = useState([]);
   const getWishList = localStorage.getItem("wishList");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const aiResult = localStorage.getItem("result")
+    ? JSON.parse(localStorage.getItem("result"))
+    : null;
+
+  const openSurvey = () => {
+    setIsOpen(true);
+  };
 
   useEffect(() => {
-    const parseWishList = getWishList ? JSON.parse(getWishList) : [];
+    const parseWishList = localStorage.getItem("wishList")
+      ? JSON.parse(localStorage.getItem("wishList"))
+      : [];
     setWishList(parseWishList);
-  }, [getWishList]);
+  }, []);
+
+  console.log("wishList", wishList);
+
+  const handleCallback = () => {
+    const parseWishList = localStorage.getItem("wishList")
+      ? JSON.parse(localStorage.getItem("wishList"))
+      : [];
+    setWishList(parseWishList);
+  };
 
   return (
     <MyPageContainer>
@@ -175,11 +197,25 @@ const MyPage = () => {
                 fontSize: "0.875rem",
                 marginBottom: "5px",
               }}
-              onClick={goToSurveyPage}
+              onClick={openSurvey}
             >
               <span style={{ color: "white" }}>{`진단 다시 받기 >`}</span>
             </ReSurveyButton>
           </MyDogType>
+
+          {aiResult ? (
+            <DogItemContainer>
+              {aiResult.map((item, index) => (
+                <DogItem data={item} rank={index + 1} />
+              ))}
+            </DogItemContainer>
+          ) : (
+            <>
+              <span>
+                입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.
+              </span>
+            </>
+          )}
         </TextContents>
 
         <TextContents>
@@ -194,7 +230,7 @@ const MyPage = () => {
           </span>
           <DogItemContainer>
             {wishList.map((dog) => (
-              <DogItem data={dog} />
+              <DogItem data={dog} callback={handleCallback} />
             ))}
 
             {wishList.length === 0 && (
@@ -205,6 +241,7 @@ const MyPage = () => {
           </DogItemContainer>
         </TextContents>
       </HomeContents>
+      <SurveyModal isOpen={isOpen} handleClose={() => setIsOpen(false)} />
     </MyPageContainer>
   );
 };

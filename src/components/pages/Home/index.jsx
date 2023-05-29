@@ -93,6 +93,25 @@ const DogType = styled("div")`
     margin-bottom: 20px;
   }
 `;
+const MyDogType = styled("div")`
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 50px;
+  background: url("./img/after_page.png") no-repeat;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  position: relative;
+  margin-bottom: 30px;
+`;
+const MyDogText = styled("div")`
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  color: white;
+`;
+
 const DogImage = styled("img")`
   width: 55%;
   height: 85%;
@@ -154,9 +173,26 @@ const GoToSurveyButton = styled(Button)`
   }
 `;
 
-// const goToSurveyPage = () => {
-//   customHistory.push(process.env.PUBLIC_URL + "/survey");
-// };
+const AiDogType = styled("div")`
+  display: flex;
+  align-items: center;
+  width: 300px;
+`;
+const AiDogImage = styled("img")`
+  height: 100px;
+  object-fit: contain;
+  margin-right: 20px;
+`;
+const AiDogName = styled("div")`
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+`;
+
+const goToInfoPage = () => {
+  customHistory.push(process.env.PUBLIC_URL + "/info");
+  window.scrollTo(0, 0);
+};
 
 const Home = () => {
   const limit = 12;
@@ -165,6 +201,12 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const aiResult = localStorage.getItem("result")
+    ? JSON.parse(localStorage.getItem("result"))
+    : null;
+
+  console.log("aiResult", aiResult);
 
   const openSurvey = () => {
     setIsOpen(true);
@@ -362,8 +404,56 @@ const Home = () => {
 
         <TextContents>
           <TextTitle>유기반려견 찾기</TextTitle>
-          <span>입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.</span>
-          <SurveyButton onClick={openSurvey}>설문 START</SurveyButton>
+
+          {aiResult ? (
+            <>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>
+                  설문 결과를 기반으로 딱 맞는 유기반려견을 찾아보세요!
+                </span>
+              </div>
+              <MyDogType>
+                <AiDogType>
+                  <AiDogImage src="./img/bti1.png" alt="" />
+                  <AiDogName>만능 멍멍이</AiDogName>
+                </AiDogType>
+                <MyDogText>
+                  <AiDogName>
+                    당신과 잘 맞는 '만능 멍멍이' 유형의 강아지를 만나보세요!
+                  </AiDogName>
+                  <span style={{ marginTop: "8px" }}>
+                    아래 목록은 설문결과가 반영된 목록입니다.
+                  </span>
+                </MyDogText>
+                <Button
+                  variant="text"
+                  style={{
+                    justifySelf: "flex-end",
+                    alignSelf: "flex-end",
+                    position: "absolute",
+                    right: "30px",
+                    fontSize: "0.875rem",
+                    marginBottom: "5px",
+                  }}
+                  onClick={openSurvey}
+                >
+                  <span style={{ color: "white" }}>{`진단 다시 받기 >`}</span>
+                </Button>
+              </MyDogType>
+              <DogItemContainer>
+                {aiResult.map((item, index) => (
+                  <DogItem data={item} rank={index + 1} />
+                ))}
+              </DogItemContainer>
+            </>
+          ) : (
+            <>
+              <span>
+                입양자 설문을 완료하면 더 자세한 목록을 볼 수 있습니다.
+              </span>
+              <SurveyButton onClick={openSurvey}>설문 START</SurveyButton>
+            </>
+          )}
 
           <SearchFilter changeFilter={handleFilterState} />
 
@@ -388,7 +478,11 @@ const Home = () => {
           <TextTitle>입양정보</TextTitle>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span>입양하기 전 꼭 확인해야할 입양 정보를 확인하세요.</span>
-            <Button variant="text" sx={{ p: "5px 20px" }}>
+            <Button
+              variant="text"
+              sx={{ p: "5px 20px" }}
+              onClick={goToInfoPage}
+            >
               <span style={{ color: "#5f49a6", textDecoration: "underline" }}>
                 더 자세한 정보 보기
               </span>

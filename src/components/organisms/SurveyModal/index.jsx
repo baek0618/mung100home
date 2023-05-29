@@ -39,60 +39,14 @@ const SurveyModal = ({ isOpen, handleClose }) => {
   //   },
   // ]);
 
-  useEffect(() => {
-    // const fetchData = () => {
-    //   const docRef = db.collection("data_ugi").doc(user.email);
-    //   docRef
-    //     .get()
-    //     .then((docSnapshot) => {
-    //       if (docSnapshot.exists) {
-    //         const data = docSnapshot.data();
-    //         const resultsData = data.results;
-    //         setResults(resultsData);
-
-    //         // Send the resultsData to the Flask server
-    //         const API_URL =
-    //           "https://ugiugi-453cd.du.r.appspot.com/react_to_flask";
-    //         axios
-    //           .post(
-    //             API_URL,
-    //             { results: resultsData },
-    //             {
-    //               headers: {
-    //                 "Content-Type": "application/json; charset=UTF-8",
-    //               },
-    //             }
-    //           )
-    //           .then((response) => {
-    //             datas(response.data);
-    //           })
-    //           .catch((error) => {
-    //             console.log(error);
-    //           });
-    //       } else {
-    //         console.log("Document doesn't exist");
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // };
-
-    // fetchData();
-
+  const aiAnalysis = (results) => {
     const API_URL = "https://ugiugi-453cd.du.r.appspot.com/react_to_flask";
+    // const results = localStorage.getItem("survey");
     axios
       .post(
         API_URL,
         {
-          results: {
-            home: ["오피스텔"],
-            room: ["투룸"],
-            tkdwn: ["가족중 한사람은 꼭 상주한다."],
-            tkscor: ["매일 1회 이상"],
-            yesno: ["아니오"],
-            ifyes: ["질병 없음"],
-          },
+          results,
         },
         {
           headers: {
@@ -102,12 +56,13 @@ const SurveyModal = ({ isOpen, handleClose }) => {
       )
       .then((response) => {
         // datas(response.data);
-        console.log("response", response);
+        console.log("response", response.data);
+        localStorage.setItem("result", JSON.stringify(response.data));
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  };
 
   let json = {
     questions: [
@@ -176,10 +131,9 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         choicesOrder: "asc",
         choices: ["예", "아니오"],
       },
-
       {
         type: "checkbox",
-        name: "yesno",
+        name: "ifyes",
         title: "키우는 강아지의 정보를 입력해주세요",
         isRequired: true,
         hasSelectAll: false,
@@ -207,13 +161,9 @@ const SurveyModal = ({ isOpen, handleClose }) => {
 
   const alertResults = useCallback((sender) => {
     const results = JSON.stringify(sender.data);
-    const res = setDoc(doc(db, "data_ugi", "abcd"), { results })
-      .then((data) => {
-        console.log("data", data);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
+    console.log("resultsresults", results);
+    localStorage.setItem("survey", results);
+    aiAnalysis(results);
   });
   const survey = new Model(json);
   survey.onComplete.add(alertResults);
@@ -234,7 +184,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
           <h2 style={{ marginBottom: "20px" }}>
             완료버튼을 누르고 마이페이지로 가세요
           </h2>
-          <Survey model={survey} />;
+          <Survey model={survey} />
         </div>
       </SurveyContainer>
     </Modal>

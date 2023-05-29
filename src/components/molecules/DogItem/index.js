@@ -55,7 +55,7 @@ const DogRank = styled("div")`
   align-items: center;
 `;
 
-const DogItem = ({ rank, data }) => {
+const DogItem = ({ rank, data, callback }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleItemModal = () => {
@@ -88,6 +88,7 @@ const DogItem = ({ rank, data }) => {
           isOpen={isOpen}
           handleClose={() => setIsOpen(false)}
           data={data}
+          callback={callback}
         />
       )}
     </>
