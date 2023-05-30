@@ -60,7 +60,6 @@ const SurveyModal = ({ isOpen, handleClose }) => {
       )
       .then((response) => {
         // datas(response.data);
-        console.log("response", response.data);
         dispatch(setAiResult(response.data));
         enqueueSnackbar(
           "AI 추천이 완료되었습니다. 마이페이지를 확인해주세요.",
