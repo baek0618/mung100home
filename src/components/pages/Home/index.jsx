@@ -194,6 +194,7 @@ const AiDogType = styled("div")`
   display: flex;
   align-items: center;
   width: 300px;
+  justify-content: center;
 `;
 const AiDogImage = styled("img")`
   height: 100px;

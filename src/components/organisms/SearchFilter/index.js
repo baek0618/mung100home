@@ -35,11 +35,20 @@ const RowBox = styled("div")`
 const FilterItemButtonWrapper = styled("div")`
   display: flex;
   width: 80%;
+  @media all and (max-width: 1024px) {
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 `;
 const FilterItemButton = styled(Button)`
   margin-right: 20px;
   padding: 6px 25px;
   border-radius: 16px;
+  @media all and (max-width: 1024px) {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
 `;
 const SearchButton = styled(Button)`
   @media all and (max-width: 1024px) {
