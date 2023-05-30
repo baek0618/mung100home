@@ -12,6 +12,7 @@ import { db } from "common/firebase";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setSurvey, setAiResult } from "store/dog";
+import { isMobile } from "react-device-detect";
 
 import "survey-react/survey.css";
 import "./survey.css";
@@ -84,7 +85,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         isRequired: true,
         hasSelectAll: false,
         hasNone: false,
-        colCount: 5,
+        colCount: isMobile ? 2 : 5,
         choicesOrder: "asc",
         choices: ["오피스텔", "다세대", "빌라", "아파트", "전원주택"],
       },
@@ -96,7 +97,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         hasSelectAll: false,
         hasNone: false,
         noneText: "None of the above",
-        colCount: 4,
+        colCount: isMobile ? 2 : 4,
         choicesOrder: "asc",
         choices: ["원룸", "1.5룸", "투룸", "쓰리룸 이상"],
       },
@@ -108,7 +109,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         hasSelectAll: false,
         hasNone: false,
         noneText: "None of the above",
-        colCount: 4,
+        colCount: isMobile ? 1 : 4,
         choicesOrder: "asc",
         choices: [
           "가족중 한사람은 꼭 상주한다.",
@@ -126,7 +127,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         hasSelectAll: false,
         hasNone: false,
         noneText: "None of the above",
-        colCount: 4,
+        colCount: isMobile ? 2 : 4,
         choicesOrder: "asc",
         choices: ["1주에 1~2회", "1주에 3~4회", "1주에 5~6회", "매일 1회 이상"],
       },
@@ -150,7 +151,7 @@ const SurveyModal = ({ isOpen, handleClose }) => {
         hasSelectAll: false,
         hasNone: false,
         noneText: "None of the above",
-        colCount: 3,
+        colCount: isMobile ? 2 : 3,
         choices: [
           "소형견",
           "중형견",

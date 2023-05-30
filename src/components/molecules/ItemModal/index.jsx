@@ -39,6 +39,10 @@ const XButton = styled(Button)`
   height: 40px;
   font-size: 2.5rem;
   font-weight: bold;
+  @media all and (max-width: 1024px) {
+    top: 15px;
+    right: 15px;
+  }
 `;
 const DogImage = styled("div")`
   width: 40%;

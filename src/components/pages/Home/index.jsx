@@ -124,7 +124,11 @@ const MyDogText = styled("div")`
     margin-top: 20px;
   }
 `;
-
+const ReSurveyButton = styled(Button)`
+  @media all and (max-width: 1024px) {
+    display: none;
+  }
+`;
 const DogImage = styled("img")`
   width: 55%;
   height: 85%;
@@ -432,7 +436,7 @@ const Home = () => {
                     아래 목록은 설문결과가 반영된 목록입니다.
                   </span>
                 </MyDogText>
-                <Button
+                <ReSurveyButton
                   variant="text"
                   style={{
                     justifySelf: "flex-end",
@@ -445,7 +449,7 @@ const Home = () => {
                   onClick={openSurvey}
                 >
                   <span style={{ color: "white" }}>{`진단 다시 받기 >`}</span>
-                </Button>
+                </ReSurveyButton>
               </MyDogType>
               <DogItemContainer>
                 {aiResult.map((item, index) => (

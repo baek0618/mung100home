@@ -16,7 +16,7 @@ const HeadContainer = styled("div")`
   padding-top: 10px;
   padding-bottom: 10px;
   @media all and (max-width: 1024px) {
-    height: 120px;
+    height: 100px;
   }
 `;
 const HeadWrapper = styled("div")`
@@ -35,8 +35,8 @@ const Logo = styled(IconButton)`
   height: 80px;
 
   @media all and (max-width: 1024px) {
-    width: 260px;
-    height: 60px;
+    width: 240px;
+    height: 40px;
   }
 `;
 const MenuContainer = styled("div")`
