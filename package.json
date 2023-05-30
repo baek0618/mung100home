@@ -2,7 +2,6 @@
   "name": "mung100home",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://baek0618.github.io/mung100home",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

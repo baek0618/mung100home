@@ -22,7 +22,7 @@ const BannerContainer = styled("div")`
   align-items: center;
   height: 560px;
   background-color: tan;
-  background: url("./img/SearchBanner.png") no-repeat;
+  background: url("/img/SearchBanner.png") no-repeat;
   background-size: cover;
   padding: 0 20px;
 `;
@@ -98,7 +98,7 @@ const MyDogType = styled("div")`
   width: 100%;
   border-radius: 20px;
   padding: 0 50px;
-  background: url("./img/after_page.png") no-repeat;
+  background: url("/img/after_page.png") no-repeat;
   height: 170px;
   display: flex;
   align-items: center;
@@ -207,7 +207,7 @@ const AiDogName = styled("div")`
 `;
 
 const goToInfoPage = () => {
-  customHistory.push(process.env.PUBLIC_URL + "/info");
+  customHistory.push("/info");
   window.scrollTo(0, 0);
 };
 
@@ -388,7 +388,7 @@ const Home = () => {
             <GoToSurveyButton
               variant="text"
               sx={{ p: "5px 20px" }}
-              endIcon={<img src="./img/icons/recom_arrow.png" alt="" />}
+              endIcon={<img src="/img/icons/recom_arrow.png" alt="" />}
               onClick={openSurvey}
             >
               <span style={{ color: "#5f49a6", textDecoration: "underline" }}>
@@ -399,15 +399,15 @@ const Home = () => {
 
           <DogTypeWrapper>
             <DogType>
-              <DogImage src="./img/bti1.png" alt="" />
+              <DogImage src="/img/bti1.png" alt="" />
               <DogName>만능 멍멍이</DogName>
             </DogType>
             <DogType>
-              <DogImage src="./img/bti2.png" alt="" />
+              <DogImage src="/img/bti2.png" alt="" />
               <DogName>나랑 같이 뛸래?</DogName>
             </DogType>
             <DogType>
-              <DogImage src="./img/bti3.png" alt="" />
+              <DogImage src="/img/bti3.png" alt="" />
               <DogName>손길이 필요해</DogName>
             </DogType>
           </DogTypeWrapper>
@@ -425,7 +425,7 @@ const Home = () => {
               </div>
               <MyDogType>
                 <AiDogType>
-                  <AiDogImage src="./img/bti1.png" alt="" />
+                  <AiDogImage src="/img/bti1.png" alt="" />
                   <AiDogName>만능 멍멍이</AiDogName>
                 </AiDogType>
                 <MyDogText>

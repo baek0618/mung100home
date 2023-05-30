@@ -30,18 +30,8 @@ function App() {
               <Routes>
                 <Route element={<Layout />}>
                   <Route path={`/`} element={<HomePage />} />
-                  <Route
-                    path={process.env.PUBLIC_URL + `/`}
-                    element={<HomePage />}
-                  />
-                  <Route
-                    path={process.env.PUBLIC_URL + `/info`}
-                    element={<InfoPage />}
-                  />
-                  <Route
-                    path={process.env.PUBLIC_URL + `/myPage`}
-                    element={<MyPage />}
-                  />
+                  <Route path={`/info`} element={<InfoPage />} />
+                  <Route path={`/myPage`} element={<MyPage />} />
                 </Route>
 
                 {/* <Route path="*" element={<NotFound />} /> */}

@@ -101,15 +101,15 @@ const Menu = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const goToHomePage = () => {
-    customHistory.push(process.env.PUBLIC_URL + `/`);
+    customHistory.push(`/`);
     setDialogOpen(false);
   };
   const goToMyPage = () => {
-    customHistory.push(process.env.PUBLIC_URL + "/myPage");
+    customHistory.push("/myPage");
     setDialogOpen(false);
   };
   const goToInfoPage = () => {
-    customHistory.push(process.env.PUBLIC_URL + "/info");
+    customHistory.push("/info");
     setDialogOpen(false);
   };
 
@@ -117,7 +117,7 @@ const Menu = () => {
     <HeadContainer>
       <HeadWrapper>
         <Logo onClick={goToHomePage}>
-          <img src="./img/main_logo.png" alt="logo" style={{ width: "100%" }} />
+          <img src="img/main_logo.png" alt="logo" style={{ width: "100%" }} />
         </Logo>
         <MenuContainer>
           <UserMenuWrapper>
@@ -171,7 +171,7 @@ const Menu = () => {
         <HamburgerMenu onClick={() => setDialogOpen(true)}>
           <img
             style={{ width: "100%", height: "100%" }}
-            src="./img/icons/hamburger.png"
+            src="img/icons/hamburger.png"
             alt=""
           />
         </HamburgerMenu>

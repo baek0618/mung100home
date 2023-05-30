@@ -39,14 +39,14 @@ const InputLabel = styled("span")`
 `;
 
 const goToHomePage = () => {
-  customHistory.push(process.env.PUBLIC_URL + `/`);
+  customHistory.push(`/`);
 };
 
 const Login = () => {
   return (
     <LoginContainer>
       <Logo onClick={goToHomePage}>
-        <img src="./img/main_logo.png" alt="logo" style={{ width: "100%" }} />
+        <img src="/img/main_logo.png" alt="logo" style={{ width: "100%" }} />
       </Logo>
 
       <LoginForm>

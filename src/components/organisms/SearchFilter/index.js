@@ -194,7 +194,7 @@ const SearchFilter = ({ changeFilter }) => {
         <Button
           endIcon={
             <img
-              src="./img/icons/reset.png"
+              src="/img/icons/reset.png"
               style={{ width: "18px", height: "18px", opacity: "0.75" }}
               alt=""
             />
