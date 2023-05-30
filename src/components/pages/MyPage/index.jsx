@@ -34,6 +34,13 @@ const BannerContents = styled("div")`
   text-align: left;
   color: white;
 `;
+const BannerText = styled("span")`
+  font-size: 2rem;
+  margin-top: 14px;
+  @media all and (max-width: 1024px) {
+    font-size: 1.7rem;
+  }
+`;
 
 const HomeContents = styled("div")`
   display: flex;
@@ -152,9 +159,7 @@ const MyPage = () => {
           <span style={{ fontSize: "3.3331rem", fontWeight: "bold" }}>
             마이페이지
           </span>
-          <span style={{ fontSize: "2rem", marginTop: "14px" }}>
-            찜한 유기반려견의 정보를 모아보세요!
-          </span>
+          <BannerText>찜한 유기반려견의 정보를 모아보세요!</BannerText>
         </BannerContents>
       </BannerContainer>
       <HomeContents>

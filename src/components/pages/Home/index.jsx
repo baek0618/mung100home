@@ -39,7 +39,7 @@ const BannerTitle = styled("div")`
   font-size: 4.5831rem;
   font-weight: bold;
   @media all and (max-width: 1024px) {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 `;
 const HomeContents = styled("div")`

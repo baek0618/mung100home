@@ -28,7 +28,7 @@ const BannerTitle = styled("div")`
   font-family: "Poppins", sans-serif;
 
   @media all and (max-width: 1024px) {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 `;
 
